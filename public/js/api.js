@@ -16,11 +16,11 @@ const API = {
                 if (response.status === 401 && window.location.pathname !== '/index.html' && window.location.pathname !== '/') {
                     // 未認証の場合はログイン画面へ
                     window.location.href = '/index.html';
-                    throw new Error('Unauthorized');
+                    throw new Error('認証が必要です');
                 }
 
-                const error = await response.json().catch(() => ({ error: 'Unknown error' }));
-                throw new Error(error.error || 'Request failed');
+                const error = await response.json().catch(() => ({ error: '不明なエラーが発生しました' }));
+                throw new Error(error.error || 'リクエストに失敗しました');
             }
 
             return await response.json();
