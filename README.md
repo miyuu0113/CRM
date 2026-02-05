@@ -1,6 +1,14 @@
 # CRMシステム - 使用方法
 
-## 起動方法
+## 🚀 クイックスタート
+
+### Render.comでデプロイ（推奨）
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/miyuu0113/CRM)
+
+詳細な手順は [DEPLOY.md](DEPLOY.md) を参照してください。
+
+### ローカルで起動
 
 ```bash
 # サーバー起動

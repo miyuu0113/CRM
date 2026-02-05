@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: crm-system
+    env: node
+    plan: free
+    buildCommand: npm install && node database/init.js && node database/seed.js
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: PORT
+        value: 10000
+      - key: DB_PATH
+        value: /var/data/crm.db
+    disk:
+      name: crm-data
+      mountPath: /var/data
+      sizeGB: 1
