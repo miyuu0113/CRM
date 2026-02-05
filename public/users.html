@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ユーザー管理 - CRM System</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/companies.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">CRM System</h1>
+                <div class="header-right">
+                    <span class="user-info">
+                        <span id="userFullName"></span>
+                        <span class="user-role" id="userRole"></span>
+                    </span>
+                    <button class="btn-logout" id="logoutBtn">ログアウト</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-wrapper">
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <a href="/dashboard.html" class="nav-item">
+                        <span class="nav-icon">📊</span>
+                        <span>ダッシュボード</span>
+                    </a>
+                    <a href="/companies.html" class="nav-item">
+                        <span class="nav-icon">🏢</span>
+                        <span>顧客一覧</span>
+                    </a>
+                    <a href="/users.html" class="nav-item active">
+                        <span class="nav-icon">👥</span>
+                        <span>ユーザー管理</span>
+                    </a>
+                </nav>
+            </aside>
+
+            <main class="main-content">
+                <div class="page-header">
+                    <h2>ユーザー管理</h2>
+                    <button class="btn-primary" id="addUserBtn">新規ユーザー登録</button>
+                </div>
+
+                <div class="table-container">
+                    <table class="table" id="usersTable">
+                        <thead>
+                            <tr>
+                                <th>ユーザー名</th>
+                                <th>氏名</th>
+                                <th>メールアドレス</th>
+                                <th>権限</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+                            <tr>
+                                <td colspan="5" class="text-center">読み込み中...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- ユーザー登録/編集モーダル -->
+    <div id="userModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">新規ユーザー登録</h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <form id="userForm">
+                <input type="hidden" id="userId">
+                <div class="form-group">
+                    <label for="username">ユーザー名 <span class="required">*</span></label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="fullName">氏名 <span class="required">*</span></label>
+                    <input type="text" id="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">メールアドレス <span class="required">*</span></label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">パスワード <span class="required" id="passwordRequired">*</span></label>
+                    <input type="password" id="password">
+                    <small style="color: #666;">編集時は空欄で変更なし</small>
+                </div>
+                <div class="form-group">
+                    <label for="role">権限 <span class="required">*</span></label>
+                    <select id="role" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px;">
+                        <option value="user">一般ユーザー</option>
+                        <option value="admin">管理者</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" id="cancelBtn">キャンセル</button>
+                    <button type="submit" class="btn-primary">保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/users.js"></script>
+</body>
+</html>

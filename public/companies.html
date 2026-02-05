@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>顧客一覧 - CRM System</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/companies.css">
+</head>
+<body>
+    <div class="container">
+        <!-- ヘッダー -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">CRM System</h1>
+                <div class="header-right">
+                    <span class="user-info">
+                        <span id="userFullName"></span>
+                        <span class="user-role" id="userRole"></span>
+                    </span>
+                    <button class="btn-logout" id="logoutBtn">ログアウト</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- メインコンテンツ -->
+        <div class="main-wrapper">
+            <!-- サイドバー -->
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <a href="/dashboard.html" class="nav-item">
+                        <span class="nav-icon">📊</span>
+                        <span>ダッシュボード</span>
+                    </a>
+                    <a href="/companies.html" class="nav-item active">
+                        <span class="nav-icon">🏢</span>
+                        <span>顧客一覧</span>
+                    </a>
+                    <a href="/users.html" class="nav-item" id="usersLink" style="display: none;">
+                        <span class="nav-icon">👥</span>
+                        <span>ユーザー管理</span>
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- メインエリア -->
+            <main class="main-content">
+                <div class="page-header">
+                    <h2>顧客一覧</h2>
+                    <button class="btn-primary" id="addCompanyBtn">新規登録</button>
+                </div>
+
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="会社名で検索..." class="search-input">
+                </div>
+
+                <div class="table-container">
+                    <table class="table" id="companiesTable">
+                        <thead>
+                            <tr>
+                                <th>会社名</th>
+                                <th>業種</th>
+                                <th>電話番号</th>
+                                <th>担当者</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="companiesTableBody">
+                            <tr>
+                                <td colspan="5" class="text-center">読み込み中...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- 新規登録/編集モーダル -->
+    <div id="companyModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">新規法人登録</h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <form id="companyForm">
+                <input type="hidden" id="companyId">
+                <div class="form-group">
+                    <label for="companyName">会社名 <span class="required">*</span></label>
+                    <input type="text" id="companyName" required>
+                </div>
+                <div class="form-group">
+                    <label for="industry">業種</label>
+                    <input type="text" id="industry">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="postalCode">郵便番号</label>
+                        <input type="text" id="postalCode" placeholder="000-0000">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">電話番号</label>
+                        <input type="tel" id="phone">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address">住所</label>
+                    <input type="text" id="address">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fax">FAX</label>
+                        <input type="text" id="fax">
+                    </div>
+                    <div class="form-group">
+                        <label for="website">ウェブサイト</label>
+                        <input type="url" id="website" placeholder="https://example.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="notes">備考</label>
+                    <textarea id="notes" rows="3"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" id="cancelBtn">キャンセル</button>
+                    <button type="submit" class="btn-primary">保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/companies.js"></script>
+</body>
+</html>

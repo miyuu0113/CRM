@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - CRM System</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="container">
+        <!-- ヘッダー -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">CRM System</h1>
+                <div class="header-right">
+                    <span class="user-info">
+                        <span id="userFullName"></span>
+                        <span class="user-role" id="userRole"></span>
+                    </span>
+                    <button class="btn-logout" id="logoutBtn">ログアウト</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- メインコンテンツ -->
+        <div class="main-wrapper">
+            <!-- サイドバー -->
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <a href="/dashboard.html" class="nav-item active">
+                        <span class="nav-icon">📊</span>
+                        <span>ダッシュボード</span>
+                    </a>
+                    <a href="/companies.html" class="nav-item">
+                        <span class="nav-icon">🏢</span>
+                        <span>顧客一覧</span>
+                    </a>
+                    <a href="/users.html" class="nav-item" id="usersLink" style="display: none;">
+                        <span class="nav-icon">👥</span>
+                        <span>ユーザー管理</span>
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- メインエリア -->
+            <main class="main-content">
+                <h2>ダッシュボード</h2>
+                <p class="welcome-message">ようこそ、<span id="welcomeUserName"></span>さん</p>
+
+                <div class="dashboard-cards">
+                    <div class="card">
+                        <h3>今日の予定</h3>
+                        <p class="card-value">準備中</p>
+                        <p class="card-subtitle">実装予定：ネクストアクション表示</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>最近の活動</h3>
+                        <p class="card-value">準備中</p>
+                        <p class="card-subtitle">実装予定：活動ログ表示</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>担当顧客数</h3>
+                        <p class="card-value">準備中</p>
+                        <p class="card-subtitle">実装予定：顧客統計表示</p>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>システム情報</h3>
+                    <p>CRMシステムは現在フェーズ2（認証機能）まで実装されています。</p>
+                    <p>次のフェーズで顧客管理機能が利用可能になります。</p>
+                    <ul>
+                        <li>✅ フェーズ1: 基盤構築完了</li>
+                        <li>✅ フェーズ2: 認証機能完了</li>
+                        <li>⏳ フェーズ3: 顧客管理機能（実装中）</li>
+                        <li>⏳ フェーズ4: 活動ログ機能</li>
+                        <li>⏳ フェーズ5: ユーザー管理機能</li>
+                    </ul>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

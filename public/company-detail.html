@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>顧客詳細 - CRM System</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/companies.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">CRM System</h1>
+                <div class="header-right">
+                    <span class="user-info">
+                        <span id="userFullName"></span>
+                        <span class="user-role" id="userRole"></span>
+                    </span>
+                    <button class="btn-logout" id="logoutBtn">ログアウト</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-wrapper">
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <a href="/dashboard.html" class="nav-item">
+                        <span class="nav-icon">📊</span>
+                        <span>ダッシュボード</span>
+                    </a>
+                    <a href="/companies.html" class="nav-item active">
+                        <span class="nav-icon">🏢</span>
+                        <span>顧客一覧</span>
+                    </a>
+                    <a href="/users.html" class="nav-item" id="usersLink" style="display: none;">
+                        <span class="nav-icon">👥</span>
+                        <span>ユーザー管理</span>
+                    </a>
+                </nav>
+            </aside>
+
+            <main class="main-content">
+                <div class="page-header">
+                    <h2 id="companyName">読み込み中...</h2>
+                    <button class="btn-secondary" onclick="history.back()">戻る</button>
+                </div>
+
+                <div class="card" style="margin-bottom: 20px;">
+                    <h3>基本情報</h3>
+                    <div id="companyInfo">読み込み中...</div>
+                </div>
+
+                <div class="card" style="margin-bottom: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h3>取引先担当者</h3>
+                        <button class="btn-primary" id="addContactBtn">担当者追加</button>
+                    </div>
+                    <div id="contactsList">読み込み中...</div>
+                </div>
+
+                <div class="card" style="margin-bottom: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h3>当方担当者</h3>
+                        <button class="btn-primary" id="assignUserBtn">担当者割り当て</button>
+                    </div>
+                    <div id="usersList">読み込み中...</div>
+                </div>
+
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h3>活動履歴</h3>
+                        <button class="btn-primary" id="addActivityBtn">活動記録追加</button>
+                    </div>
+                    <div id="activitiesList">読み込み中...</div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- 担当者追加モーダル -->
+    <div id="contactModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>取引先担当者追加</h3>
+                <button class="modal-close" id="contactModalClose">&times;</button>
+            </div>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="contactName">氏名 <span class="required">*</span></label>
+                    <input type="text" id="contactName" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="department">部署</label>
+                        <input type="text" id="department">
+                    </div>
+                    <div class="form-group">
+                        <label for="position">役職</label>
+                        <input type="text" id="position">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">メールアドレス</label>
+                    <input type="email" id="contactEmail">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="contactPhone">電話番号</label>
+                        <input type="tel" id="contactPhone">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMobile">携帯電話</label>
+                        <input type="tel" id="contactMobile">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="contactNotes">備考</label>
+                    <textarea id="contactNotes" rows="2"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" id="contactCancelBtn">キャンセル</button>
+                    <button type="submit" class="btn-primary">追加</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/company-detail.js"></script>
+</body>
+</html>
