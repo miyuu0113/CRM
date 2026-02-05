@@ -1,8 +1,9 @@
 services:
   - type: web
     name: crm-system
-    runtime: node
+    env: node
     plan: free
+    region: oregon
     buildCommand: npm install && node database/init.js && node database/seed.js
     startCommand: node server.js
     envVars:
