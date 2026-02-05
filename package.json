@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "CRM System with customer and activity management",
   "main": "server.js",
+  "engines": {
+    "node": ">=18.x"
+  },
   "scripts": {
     "start": "node server.js",
     "init-db": "node database/init.js",

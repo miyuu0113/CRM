@@ -1,7 +1,7 @@
 services:
   - type: web
     name: crm-system
-    env: node
+    runtime: node
     plan: free
     buildCommand: npm install && node database/init.js && node database/seed.js
     startCommand: node server.js
